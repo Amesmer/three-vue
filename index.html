@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+    <script>
+        // 创建控制对象
+        const controlData = {
+            rotationSpeed: 0.01,
+            color: '#66ccff',
+            wireframe: false,
+            envMap: '无'
+        }
+        const gui = new dat.GUI()
+        const f = gui.addFolder('配置')
+        // f.add(controlData,'rotationSpeed',0.01,0.1,0.01)
+
+        f.add(controlData, 'rotationSpeed').min(0.01).max(0.1).step(0.01)
+        //    颜色选择器
+        f.addColor(controlData, 'color')
+        //    下拉列表
+        f.add(controlData, 'envMap', ['无', '全反射', '漫反射'])
+        // checkbox
+        f.add(controlData, 'wireframe')
+
+        f.open()
+    </script>
+</body>
+
+</html>
